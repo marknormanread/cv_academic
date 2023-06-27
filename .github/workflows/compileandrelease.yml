@@ -10,17 +10,38 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
+        
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
 
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: main.tex
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
-          name: PDF
+          name: BUILT_PDF
           path: main.pdf
+
+      - name: Download PDF file
+        uses: actions/download-artifact@v3
+        with:
+          name: BUILD_PDF
+          path: dist/mark_read_cv.pdf
+          
+      - name: Configure Git
+        run: |
+          git config --global user.name "marknormanread"
+          git config --global user.email "mark.norman.read@gmail.com"
+
+      - name: Add file
+        run: git add dist/mark_read_cv.pdf
+
+      - name: Commit changes
+        run: |
+          git commit -m "Add generated file"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
