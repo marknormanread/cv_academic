@@ -25,7 +25,7 @@ jobs:
       - name: Download PDF file
         uses: actions/download-artifact@v3
         with:
-          name: BUILD_PDF
+          name: BUILT_PDF
           path: dist/mark_read_cv.pdf
           
       - name: Configure Git
