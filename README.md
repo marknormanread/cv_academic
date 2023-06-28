@@ -7,5 +7,5 @@ But for those wanting to see what I got up to, here it is.
 This was also a little project for me to explore continuous integration / continuous deployment (CI/CD) in GitHub. 
 The PDF is built using GitHub Actions. 
 
-[Click here to download the PDF](dist/mark_read.pdf/main.pdf) (I'm still working on having it be the main viewable front-end item of this repo). 
+[Click here to download the PDF](dist/mark_read_cv.pdf/main.pdf) (I'm still working on having it be the main viewable front-end item of this repo). 
 
