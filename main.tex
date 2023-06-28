@@ -1,141 +1,1075 @@
-\documentclass[11pt]{article}
-\usepackage{paper_style}
+%
+%  untitled
+%
+%  Created by Mark Read on 2010-11-10.
+%  Copyright (c) 2010 . All rights reserved.
+%
+\documentclass[a4paper]{article}
 
-\usepackage{lipsum}  %% Package to create dummy text (comment or erase before start)
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
 
-%% ===============================================
-%% Setting the line spacing (3 options: only pick one)
-% \doublespacing
-% \singlespacing
-\onehalfspacing
-%% ===============================================
+% Setup for fullpage use
+\usepackage{fullpage}
+\usepackage[left=21mm,right=21mm,top=25mm,bottom=25mm]{geometry}
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
 
-\setlength{\droptitle}{-5em} %% Don't touch
+% Multipart figures
+%\usepackage{subfigure}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SET THE TITLE
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
 
-% TITLE:
-\title{TEST This is the Title: I hope you like it
-\thanks{Selected Paper prepared for presentation at the 201X Agricultural \& Applied Economics Association Annual Meeting}
-}
+\usepackage{hyperref}  % Embed URLs.
 
-% AUTHORS:
-\author{First Author\\% Name author
-    \href{mailto:firstauthor@ufl.edu}{\texttt{firstauthor@ufl.edu}} %% Email author 1
-\and Second Author\\% Name author
-    \href{mailto:secondauthor@ufl.edu}{\texttt{secondauthor@ufl.edu}} %% Email author 2
-\and Third Author\\% Name author
-    \href{mailto:thirdauthor@ufl.edu}{\texttt{thirdauthor@ufl.edu}}%% Email author 3
-%\and Forth Author\\% Name author
-%    \href{mailto:forthuthor@ufl.edu}{\texttt{forthuthor@ufl.edu}}%% Email author 4
-    }
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
 
-% DATE:
-\date{\today}
+% Package for including code in the document
+\usepackage{listings}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+\addtolength{\parskip}{\baselineskip}
+\setlength{\parindent}{0mm}
+\hyphenation{Enceph-alo-mye-litis}
+\hyphenation{Cross-Discip-linary}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+\renewcommand*\descriptionlabel[1]{\hspace\labelsep\normalfont #1}
+
 \begin{document}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ABSTRACT
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\setstretch{.8}
-\maketitle
-% %%%%%%%%%%%%%%%%%%
-\begin{abstract}
-% CONTENT OF ABS HERE--------------------------------------
 
-\lipsum[1] %% Dummy text for abstract. Erase before use.
-
-% END CONTENT ABS------------------------------------------
-\noindent
-\textit{\textbf{Keywords: }%
-key1; key2; key3; key4.} \\ %% <-- Keywords HERE!
-\noindent
-\textit{\textbf{JEL Classification: }%
-Q12; C22; D81.} %% <-- JEL code HERE!
-
-\end{abstract}
-}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BODY OF THE DOCUMENT
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\input{sections/introduction.tex}
-
-\input{sections/methodology.tex}
-
-\input{sections/discs_conc.tex}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% REFERENCES SECTION
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\medskip
-
-\bibliography{references.bib}
-
-\newpage
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TABLES
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{table}[H]
-  \centering
-  \caption{Example table of descriptive statistics of the main variables.}
-  \label{tab:1}
-  \scalebox{.8}{
-    \begin{tabular}{rlrrrrrr}
-    \hline
-    \multicolumn{1}{c}{\textbf{Variables}} & \multicolumn{1}{c}{\textbf{Categories}} & \multicolumn{1}{c}{\textbf{Unit}} & \multicolumn{1}{c}{\textbf{Rep}} & \multicolumn{1}{c}{\textbf{Mean}} & \multicolumn{1}{c}{\textbf{St. Dev.}} & \multicolumn{1}{c}{\textbf{Min}} & \multicolumn{1}{c}{\textbf{Max}} \\ \hline \hline
-
-    \multicolumn{1}{l}{Variable 1} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 0     & 0     & 0     & 0 \\
-          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 22,411.20 & 6,325.90 & 13,819 & 31,201 \\
-          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 5,869.60 & 4,609.90 & -464.1 & 12,744.10 \\
-    \multicolumn{1}{l}{Variable 2} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 1,777.40 & 144.5 & 1,642.30 & 1,912.60 \\
-          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 21,444.80 & 5,146.90 & 15,096 & 28,032 \\
-          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 4,138.50 & 2,644.10 & 22.2  & 7,932.70 \\
-    \multicolumn{1}{l}{Variable 3} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 2,346.80 & 190.8 & 2,168.30 & 2,525.20 \\
-          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 18,343.30 & 2,460.70 & 15,269.00 & 21,524.10 \\
-          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 3,699.20 & 2,549.80 & 1,299.10 & 8,709.80 \\
-    \multicolumn{1}{l}{Variable 4} & Category A & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 2,288.80 & 186.1 & 2,114.80 & 2,462.90 \\
-          & Category B & \multicolumn{1}{c}{lb} & \multicolumn{1}{c}{8} & 23,450.40 & 4,172.50 & 20,045.00 & 32,363.00 \\
-          & Category C & \multicolumn{1}{c}{\$} & \multicolumn{1}{c}{8} & 6,619.80 & 1,918.40 & 4,479.70 & 10,633.90 \\
-\hline
-          & CASE \#1 &       &       & 14    & 6.61  & 6.9   & 27.9 \\
-          & CASE \#2 &       &       & 22.8  & 7.73  & 10.2  & 31.4 \\
-    \hline
-    \end{tabular}}
-\end{table}%
+\begin{center}
+\LARGE{\textbf{Dr. Mark Norman Read}}\vspace{3mm}\\
+%\large{WHAT ARE YOU APPLYING FOR?}\\ \vspace{3mm}
+\end{center}
 
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% FIGURES
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+A412/7 Gantry Lane, Camperdown, NSW 2050, Australia.\\
+mark.read@sydney.edu.au \hspace{1cm} +61 (0) 416 282 513 \hspace{1cm} http://marknormanread.github.io\\
+\end{center}
 
-\begin{figure}[H]
-    \centering
-        \includegraphics[scale=.6]{figures/example_figure.png}
-    \caption{Example figure.}
-    \label{fig:1}
-\end{figure}
+\section*{Education}
 
-% ==========================
-% ==========================
-% ==========================
+% \subsection*{Education}
 
+\begin{tabular}{p{12cm}p{6cm}}
+    % Qualification & Host institution\\
+    % \hline\hline
+
+    \textbf{Ph.D. in Computer Science}\newline
+    Computer Science, University of York, UK
+    \vspace{3mm}
+    % Funded through scholarship\newline
+    &
+    Oct 2007 - Feb 2012\\
+
+    % \hline
+    \textbf{MEng in Computer Science \& Systems Engineering}\newline
+    \textit{1$^{st}$ Class Honours}\newline
+    Computer Science, University of York, UK
+    \vspace{3mm}
+    &
+    Oct 2002 - Oct 2007\\
+
+    % \hline
+    \textbf{Graduate Certificate in Educational Studies (Higher Education)} \newline
+    \textit{High Distinction.}\newline
+    The University of Sydney, Australia
+    \vspace{3mm}
+    &
+    2020\\
+    % \hline
+\end{tabular}
+
+\section*{Employment History}
+% \subsection*{Employment history}
+
+\begin{tabular}{p{12cm}p{6cm}}
+
+    % Qualification & Host institution\\
+    % \hline\hline
+
+    \textbf{Lecturer in Digital Health (Health Informatics)}\newline
+    School of Computer Science, University of Sydney
+    \vspace{3mm}
+    &
+    Sept 2019 - current\\
+
+    \textbf{Research Fellow}\newline
+    School of Chemical and Biomolecular Engineering, University of Sydney
+    \vspace{3mm}
+    &
+    Sept 2018 - Aug 2019\\
+
+
+    \textbf{Research Fellow} \newline
+    School of Life and Environmental Sciences and the Charles Perkins Centre, University of Sydney
+    \vspace{3mm}
+    &
+    Sept 2013 - Sept 2018 \\
+
+    \textbf{Research Associate} \newline
+    Electronics Engineering, University of York
+    &
+    April 2011 - August 2013\\[2mm]
+\end{tabular}
+
+% \begin{tabular}{lp{4.5cm}p{7cm}}
+% Date & Position & Host institution\\
+% \hline\hline
+% Sept 2019 - current &
+% Lecturer in Digital Health (Health Informatics)&
+% School of Computer Science, \newline
+% University of Sydney\\[1mm]
+
+% \hline
+% Sept 2018 - Aug 2019 &
+% Research Fellow &
+% School of Chemical and Biomolecular Engineering,
+% University of Sydney\\[1mm]
+
+% \hline
+% Sept 2013 - Sept 2018 &
+% Research Fellow &
+% School of Life and Environmental Sciences and the Charles Perkins Centre, \newline
+% University of Sydney \\
+
+% \hline
+% April 2011 - August 2013 &
+% Research Associate &
+% Electronics Engineering, University of York\\[1mm]
+% \hline
+
+% \hline\hline
+% 2020 &
+% Graduate Certificate in Educational Studies (Higher Education) &
+% The University of Sydney\\[1mm]
+
+% Oct 2007 - Feb 2012 &
+% Ph.D. in Computer Science &
+% Computer Science, University of York\newline
+% Funded through departmental scholarship\\[1mm]
+
+% Oct 2002 - Oct 2007 &
+% MEng in Computer Science \& Systems Engineering\newline
+% 1$^{st}$ Class Honours &
+% Computer Science, University of York\newline\newline
+% \\[1mm]
+
+% June 2004 - June 2005 &
+% Industrial trainee &
+% IBM Hursley, UK\\
+% \end{tabular}
+
+\section*{Research and Scholarship}
+
+% \subsection*{B1. Research Synopsis}
+I conduct research in Health Informatics, devising novel data science and computational modelling methods that advance biomedical discovery and healthcare delivery.
+% strive to advance biological research through computational, mathematical and statistic methods, chiefly the immune system and the gut microbial communities.
+% More recently I have ventured into applying machine learning techniques to predict clinical outcomes and interpret high-throughput data sets.
+I establish and lead collaborative projects with clinicians and experimentalists to maximise the translational benefit of my work.
+
+I have three areas of principle focus:
+\begin{itemize}
+\item Using computational modelling and data science to understand the impact of gut microbial systems on our health
+\item Developing new computational algorithms and models to study the immune system through high-throughput molecular profiling
+\item Innovative computational modelling and analytical methodologies to investigate collective motion: how mobile agents achieve higher-level goals through coordination and communication. E.g. analysing how immune cells hunt for cancers and pathogens.
+\end{itemize}
+
+I have published 36 full-length peer-reviewed manuscripts, and have attracted over \$850,000 in competitive funding to support my research.
+
+\subsection*{Publications}
+
+Authorship conventions differ across the disciplines I publish in, and I adhere to those of the given journal/conference.
+In Computer Science relative contribution is indicated by authorship order.
+In Medicine and Biology, last authorship positions and corresponding author status are highly esteemed: they denote seniority in conceiving, convening and managing the project.
+% In Statistics and Mathematics, authors are often listed alphabetically.
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Refereed Journal Articles ($^{*}$ corresponding author)}
+
+%% 2022
+
+\item[J31]
+\textit{JP Molina Ortiz, \textbf{MN Read}, DD McClure, A Holmes, F Dehghani, ER Shanahan}.
+(2022).
+High throughput genome scale modeling predicts microbial vitamin requirements contribute to gut microbiome community structure.
+\textbf{Gut Microbes} 14(1):2118831.
+
+\item[J30]
+\textit{Rebecca C Simpson, Erin R Shanahan, Marcel Batten, Irene LM Reijers, \textbf{Mark Read}, Ines P Silva, Judith M Versluis, Rosilene Ribeiro, Alexandra S Angelatos, Jian Tan, Chandra Adhikari, Alexander M Menzies, Robyn PM Saw, Maria Gonzalez, Kerwin F Shannon, Andrew J Spillane, Rebecca Velickovic, Alexander J Lazar, Ashish V Damania, Aditya K Mishra, Manoj Chelvanambi, Anik Banerjee, Nadim J Ajami, Jennifer A Wargo, Laurence Macia, Andrew J Holmes, James S Wilmott, Christian U Blank, Richard A Scolyer, Georgina V Long}.
+(2022).
+Diet-driven microbial ecology underpins associations between cancer immunotherapy outcomes and the gut microbiome.
+\textbf{Nature Medicine} 28(11):2344-2352.
+
+\item[J29]
+\textit{Jian Tan, Duan Ni, Jemma Taitz, Gabriela Veronica Pinget, \textbf{Mark Read}, Alistair Senior, Jibran Abdul Wali, Reem Elnour, Erin Shanahan, Huiling Wu, Steven J Chadban, Ralph Nanan, Nicholas Jonathan Cole King, Georges Emile Grau, Stephen J Simpson, Laurence Macia}.
+(2022).
+Dietary protein increases T-cell-independent sIgA production through changes in gut microbiota-derived extracellular vesicles.
+\textbf{Nature Communications}, 13(1):4336.
+
+\item[J28]
+\textit{Givanna H Putri, Jonathan Chung, Davis N Edwards, Felix Marsh‐Wakefield, Irena Koprinska, Suat Dervish, Nicholas JC King, Thomas M Ashhurst, \underline{Mark N Read $^{*}$}}.
+(2022).
+TrackSOM: Mapping immune response dynamics through clustering of time‐course cytometry data
+\textbf{Cytometry Part A}, 103(1):54-70.
+
+\item[J27]
+\textit{Felix Marsh‐Wakefield, Pierre Juillard, Thomas M Ashhurst, Annette Juillard, Diana Shinko, Givanna H Putri, \underline{Mark N Read}, Helen M McGuire, Scott N Byrne, Simon Hawke, Georges E Grau.}
+(2022).
+Peripheral B‐cell dysregulation is associated with relapse after long‐term quiescence in patients with multiple sclerosis.
+\textbf{Immunology and Cell Biology}, 100(6):543-467.
+
+%% 2021
+
+\begin{description}
+\item[J26]
+\textit{GH Putri, I Koprinska, TM Ashhurst, NJC King, \underline{MN Read $^{*}$}.}
+(2021).
+Using single-cell cytometry to illustrate integrated multi-perspective evaluation of clustering algorithms using Pareto fronts.
+\textbf{Bioinformatics} :btab038.
+
+\item[J25]
+\textit{J Tan+, D Ni+, JA Wali, DA Cox, GV Pinget, J Taitz, CI Daien, A Senior, \underline{MN Read}, SJ Simpson, NJC King+, and L Macia+.}
+(2021).
+Dietary carbohydrate, particularly glucose, drives B cell lymphopoiesis and function.
+\textbf{iScience}, accepted for publication. + equal first/senior contributions.
+
+\item[J24]
+\textit{T Ashhurst+, F Marsh-Wakefield+, G Putri+, A Spiteri, D Shinko, \underline{MN Read}, A Smith, NJC King.}
+(2021).
+Integration, exploration, and analysis of high-dimensional single-cell cytometry data using Spectre.
+\textbf{Cytometry: Part A}, 101(3):237-253. + equal contribution.
+
+\item[J23]
+\textit{JD Hywood, G Rice, SV Pageon, \underline{MN Read}, M Biro.}
+(2021).
+Detection and characterisation of chemotactic swarming without cell tracking.
+\textbf{Journal of the Royal Society Interface} 18(176), 20200879.
+
+\item[J22]
+% \textit{M Koutsakos, LC Rowntree, L Hensen, BY Chua, CE van de Sandt, JR Habel1, W Zhang, X Jia, L Kedzierski, TM Ashhurst, GH Putri, F Marsh-Wakefield, \underline{MN Read}, DN Edwards, EB Clemens, C Yi Wong, FL Mordant, JA Juno, F Amanat, J Audsley, NE Holmes, CL Gordon, OC Smibert, JA Trubiano, CM Hughes, M Catton, JT Denholm, SYC Tong, DL Doolan, TC Kotsimbos, DC Jackson, F Krammer, DI Godfrey, AW Chung, NJC King, SR Lewin, AK Wheatley, SJ Kent, K Subbarao, J McMahon, I Thevarajan, THO Nguyen, AC Cheng and K Kedzierska}
+\textit{M Koutsakos, LC Rowntree, L Hensen, BY Chua, CE van de Sandt, JR Habel1, W Zhang, X Jia, L Kedzierski, TM Ashhurst, GH Putri, F Marsh-Wakefield, \underline{MN Read}, et al., K Kedzierska}
+(2021).
+Integrated immune dynamics define correlates of COVID-19 severity and antibody responses.
+\textbf{Cell Reports Medicine} 2(3):100208.
+
+\item[J21]
+\textit{\underline{MN Read $^{*}$}, K Alden, J Timmis, PS Andrews.}
+(2020).
+Strategies for Calibrating Models of Biology.
+\textbf{Briefings in Bioinformatics} 21(1):24-35
+
+\item[J20]
+\textit{N Lamm, \underline{MN Read}, M Nobis, D Van Ly, SG Page, VP Masamsetti, P Timpson, M Biro and AJ Cesare.}
+(2020).
+Nuclear F-actin counteracts nuclear deformation and promotes fork repair during replication stress.
+\textbf{Nature Cell Biology} 22(12):1460-1470. %https://doi.org/10.1038/s41556-020-00605-6
+
+\item[J19]
+\textit{JLG Nino, SV Pageon, SS Tay, F Colakoglu, D Kempe, J Hywood, JK Mazalo, J Cremasco, M Govendir, LF Dagley, K Hsu, S Rizzetto, J Zieba, G Rice, V Prior, G O’Neill, RJ Williams, DR Nisbet, B Kramer, AI Webb, F Luciani, \underline{MN Read}, and M Biro.}
+(2020).
+Cytotoxic T cells swarm by homotypic chemokine signalling.
+\textbf{eLife} 9:e56554.
+
+\item[J18]
+\textit{G Rangan, A Raghubanshi, A Chaitarvornkit, AN Chandra, R Gardos, A Munt, \underline{MN Read}, S Saravanabavan, JQJ Zhang, ATY Wong}
+(2020).
+Current and emerging treatment options to prevent renal failure due to autosomal dominant polycystic kidney disease.
+\textbf{Expert Opinion on Orphan Drugs} 8(8):285-302.
+
+\item[J17]
+\textit{J Zoll $^{+}$, \underline{MN Read $^{+}$}, S Heywood, E Estevez, J Marshall, H Kammoun, T Allen, A Holmes, M Febbraio, and D Henstridge}
+(2020).
+Fecal microbiota transplantation from high caloric-fed donors alters glucose metabolism in recipient mice, independently of adiposity or exercise status.
+\textbf{American Journal of Physiology-Endocrinology and Metabolism} 319(1):E203-2016.
+$^{+}$ co-first authors.
+
+\item[J16]
+\textit{CAM Fois, TYL Le, A Schindeler, S Naficy, DD McClure, \underline{MN Read}, P Valtchev, A Khademhosseini and F Dehghani.}
+(2019).
+Models of the Gut for Analyzing the Impact of Food and Drugs.
+\textbf{Advanced Healthcare Materials} 8(21):1900968.
+
+\item[J15]
+\textit{GH Putri, \underline{MN Read}, I Koprinska, D Singh, U Rohm, TM Ashhurst and NJC King.}
+(2019).
+ChronoClust: density-based clustering and cluster tracking in high-dimensional time-series data.
+\textbf{Knowledge Based Systems} 174:9-26.
+
+\item[J14]
+\textit{I Moran, A Nguyen, W Khoo, D Butt, K Bourne, C Young, J Hermes, M Biro, G Gracie, C Ma, C Munier, F Luciani, J Zaunders, A Parker, A Kelleher, S Tangye, P Croucher, R Brink, \underline{MN Read} and T Phan.}
+(2018).
+Memory B Cells Are Reactivated in Subcapsular Proliferative Foci of Lymph Nodes.
+\textbf{Nature Communications} 9:3372.
+% https://www.smh.com.au/national/scientists-find-tiny-part-in-body-that-may-be-key-to-how-vaccines-work-20180822-p4zz0h.html
+
+\item[J13]
+\textit{\underline{MN Read $^{*}$}, AJ Holmes.}
+(2017).
+Towards an integrative understanding of diet-host-gut microbiome interactions.
+\textbf{Frontiers in Immunology} 8:538.\\
+This paper is in the top 5\% of research outputs scored by Altmetric (as of 2017-11-06, score=39).
+
+\item[J12]
+\textit{AJ Holmes, YV Chew, F Colakoglu, JB Cliff, E Klaassens, \underline{MN Read}, SM Solon-Biet, AC McMahon, VC Cogger, K Ruohonen, D Raubenheimer, DG Le Couteur, SJ Simpson.}
+(2017).
+Diet-microbiome interactions in health are controlled by intestinal nitrogen source constraints.
+\textbf{Cell Metabolism} 25:1-12.\\
+This paper is in the top 5\% of research outputs scored by Altmetric (as of 2017-11-06, score=253).
+
+\item[J11]
+\textit{\underline{MN Read $^{*}$}, K Alden, L Rose and J Timmis.}
+(2016).
+Automated multi-objective calibration of biological agent-based simulations.
+\textbf{Journal of the Royal Society Interface} 13(122):20160543.
+
+\item[J10]
+\textit{\underline{MN Read $^{*}$}, J Bailey, J Timmis and T Chtanova.}
+(2016).
+Leukocyte motility models assessed through simulation and multi-objective optimization-based model selection.
+\textbf{PLoS Computational Biology} 12(9):e1005082.
+
+\item[J9]
+\textit{J Hywood, \underline{M Read}, G Rice.}
+(2016).
+Statistical analysis of spatially homogeneous dynamic agent-based processes using functional time series analysis.
+\textbf{Spatial Statistics} 17:199-219.
+
+\item[J8]
+\textit{J Cosgrove, JA Butler, K Alden, \underline{M Read}, V Kumar, J Timmis and M Coles.}
+(2015).
+Agent-based modelling in systems pharmacology.
+\textbf{CPT: Pharmacometrics \& Systems Pharmacology} 4(11):615–629.
+
+\item[J7]
+\textit{K Alden, \underline{M Read}, P Andrews, J Timmis and M Coles.}
+(2014).
+Applying spartan to understanding parameter uncertainty in simulations.
+\textbf{The R Journal} 6(2):1-10.
+
+\item[J6]
+\textit{\underline{M Read $^{*}$}, PS Andrews, J Timmis and V Kumar.}
+(2014).
+Modelling biological behaviours using the unified modelling language: an immunological case study and critique.
+\textbf{Journal of the Royal Society Interface} 11(9):20140704.
+
+\item[J5]
+\textit{\underline{M Read $^{*}$}, P Andrews, J Timmis, R Williams, R Greaves, H Sheng, M Coles, V Kumar.}
+(2013).
+Determining disease intervention strategies using spatially resolved simulations.
+\textbf{PLoS ONE} 8(11):e80506.
+
+\item[J4]
+\textit{K Alden, \underline{M Read}, J Timmis, P Andrews, H Veiga-Fernandes and M Coles.}
+(2013).
+Spartan: a comprehensive tool for understanding uncertainty in simulations of biological systems.
+\textbf{PLoS Computational Biology} 9(2):e1002916.
+
+\item[J3]
+\textit{R Greaves, \underline{M Read}, J Timmis, P Andrews, J Butler, B Gerckens and V Kumar.}
+(2013).
+In silico investigation of novel biological pathways: the role of CD200 in regulation of T cell priming in experimental autoimmune encephalomyelitis.
+\textbf{Biosystems} 112(2):107-121.
+
+\item[J2]
+\textit{R Williams, R Greaves, \underline{M Read}, J Timmis, P Andrews and V Kumar.}
+(2013).
+In silico investigation into dendritic cell regulation of CD8Treg mediated killing of Th1 cells within murine experimental autoimmune encephalomyelitis.
+\textbf{BMC Bioinformatics} 14(Suppl 6):S9.
+
+\item[J1]
+\textit{\underline{M Read $^{*}$}, P Andrews, J Timmis and V Kumar.}
+(2011).
+Techniques for grounding agent-based simulations in the real domain: a case study in experimental autoimmune encephalomyelitis.
+\textbf{Mathematical and Computer Modelling of Dynamical Systems} 17(4):296-302.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Refereed Conference Papers ($^{*}$ corresponding author)}
+
+Typical in computer science and engineering is the publication of full-length papers in conference proceedings. All the conferences in which I publish employ a peer review process, typically using at least 3 reviewers, and a round of revisions prior to decisions regarding acceptance for publication.
+
+\begin{description}
+\item[C9]
+\textit{GH Putri, \underline{MN Read $^{*}$}, I Koprinska, TM Ashhurst and NHC King.}
+(2019).
+Dimensionality reduction for clustering and cluster tracking of cytometry data.
+\textbf{International Conference on Artificial Neural Networks} pp 624-640.
+
+\item[C8]
+\textit{B Naylor, \underline{M Read}, A Turner, J Timmis and A Tyrrell.}
+(2014).
+The Relay Chain: A scalable dynamic communication link between an exploratory underwater shoal and a surface vehicle.
+\textbf{Artificial Life (ALife)}, pages 290-297.
+
+\item[C7]
+\textit{\underline{M Read $^{*}$}, C M\"oeslinger, T Dipper, D Kengyel, J Hilder, R Thenius, A Tyrrell, J Timmis and T Schmickl.}
+(2013).
+Profiling underwater swarm robotic shoaling performance using simulation.
+\textbf{Towards Autonomous Robotic Systems (TAROS)}, pages 404-416.
+
+\item[C6]
+\textit{D Sutantyo, P Levi, C M\"oslinger and \underline{M Read}}
+(2013).
+Collective-adaptive Levy flight for underwater multi-robot exploration.
+\textbf{IEEE Conference on Mechatronics and Automation}, pages 456-462.
+
+\item[C5]
+\textit{RB Greaves, \underline{M Read}, J Timmis, PS Andrews, V Kumar.}
+(2012).
+Extending an established simulation: exploration of the possible effects using a case study in experimental autoimmune encephalomyelitis.
+\textbf{International Conference on Information Processing in Cells and Tissues (IPCAT)}, LNCS 7223, pages 150-161.
+
+\item[C4]
+\textit{T Schmickl, R Thenius, C M\"oslinger, J Timmis, A Tyrrell, \underline{M Read}, J Hilder, J Halloy, C Stefanini, L Manfredi, A Campo, T. Dipper, D Sutantyo, S Kernbach.}
+(2011).
+CoCoRo – The self-aware underwater swarm.
+\textbf{IEEE International Conferences on Self-Adaptive and Self-Organizing Systems (SASO)}, pages 120-126.
+
+\item[C3]
+\textit{F Polack, P Andrews, T Ghetiu, \underline{M Read}, S Stepney, J Timmis and A Sampson.}
+(2010).
+Reflections on the simulation of complex systems for science.
+\textbf{IEEE International Conference on Engineering Complex Computer Systems (ICECCS)}, pages 276-285.
+
+\item[C2]
+\textit{\underline{M Read $^{*}$}, J Timmis, P Andrews and V Kumar.}
+(2009).
+A domain model of Experimental Autoimmune Encephalomyelitis.
+\textbf{2nd Workshop on Complex Systems Modelling and Simulation}, pages 9-44.
+
+\item[C1]
+\textit{\underline{M Read $^{*}$}, J Timmis and P Andrews.}
+(2008).
+Empirical investigation of an artificial cytokine network.
+\textbf{International Conference on Artificial Immune Systems (ICARIS)}, LNCS 5132, pages 340-351.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Books}
+
+\begin{description}
+\item[B1]
+\textit{S Stepney, FAC Polack, K Alden, P Andrews, J Bown, A Droop, RB Greaves, \underline{MN Read}, A Sampson, J Timmis, A Winfield.}
+(2018).
+\textbf{Engineering Simulations as Scientific Instruments: A Pattern Language.}
+Springer International Publishing.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Book Chapters ($^{*}$ corresponding author)}
+
+\begin{description}
+\item[CH1]
+\textit{\underline{M Read $^{*}$}, P Andrews and J Timmis.}
+(2011).
+An introduction to artificial immune systems.
+\textbf{The Handbook of Natural Computing}, edited by G Rozenberg, T Back and J Kok.
+Springer, pages 1575-1597.
+\end{description}
+
+
+%%%%%%%%%%%%%%%%%%5
+\subsubsection*{Refereed Conference Abstracts ($^{*}$ corresponding author)}
+
+The following represent peer-reviewed abstracts (1-2 pages) published in conference proceedings. In-person presentations to conference attendees facilitate rapid dissemination before pursuing publication in a journal; this is common in engineering and computer science.
+
+\begin{description}
+\item[A8]
+% \textit{M Batten, E Shanahan, R Simpson, \underline{M Read}, IP Silva, A Angelatos, J Tan, C Adhikari, AM Menzies, RP Saw, L Macia, M Gonzalez, K Shannon, R Velickovic, IL Reijers, CU Blank, JS Wilmott, AJ Holmes, RA Scolyer and GV Long.}
+\textit{M Batten, E Shanahan, R Simpson, \underline{M Read}, et al., and GV Long.}
+(2020).
+Gut microbiota predicts response and toxicity with neoadjuvant immunotherapy.
+\textbf{In: Proceedings of the Annual Meeting of the American Association for Cancer Research 2020}.
+% DOI: \url{10.1158/1538-7445.AM2020-5734}.
+
+\item[A7]
+\textit{\underline{M Read $^{*}$}, J Timmis and T Chtanova.}
+(2015).
+Simulation-based analysis of in situ cellular motility.
+\textbf{European Conference on Artificial Life (ECAL)}, page 637.
+
+\item[A6]
+\textit{\underline{M Read $^{*}$}, AJ Holmes, M Hartill-Law, S Solon-Biet, D Raubenheimer and SJ Simpson.}
+(2015).
+Simulating the influence of diet on the intestinal microbiome composition.
+\textbf{European Conference on Artificial Life (ECAL)}, page 638.
+
+\item[A5]
+\textit{\underline{M Read $^{*}$}, M Tripp, H Leonova, L Rose and J Timmis.}
+(2013).
+Automated calibration of agent-based immunological simulation.
+\textbf{International Conference on Artificial Immune Systems track at European Conference on Artificial Life (ECAL)}, MIT Press, pages 874-875.
+
+\item[A4]
+\textit{E Hart, \underline{M Read}, C McEwan, J Greensmith and U Aickelin.}
+(2013).
+On the role of the AIS practitioner.
+\textbf{Artificial Immune Systems track at European Conference on Artificial Life (ECAL)}, MIT Press, pages 891-892.
+
+\item[A3]
+\textit{\underline{M Read}, J Butler, B Ole-Gerckens, J Timmis and V Kumar.}
+(2012).
+CD200 regulation can promote recovery from autoimmunity in Experimental Autoimmune Encephalomyelitis.
+Presented at \textbf{International Conference on Artificial Immune Systems (ICARIS)}.
+
+\item[A2]
+\textit{R Williams, \underline{M Read}, J Timmis, P Andrews and V Kumar.}
+(2011).
+In silico investigation into CD8Treg mediated recovery in murine Experimental Autoimmune Encephalomyelitis.
+\textbf{International Conference on Artificial Immune Systems (ICARIS)}, LNCS 6825, pages 52-54.
+
+\item[A1]
+\textit{\underline{M Read $^{*}$}, J Timmis, P Andrews and V Kumar.}
+(2009).
+Using UML to model EAE and its regulatory network (extended abstract).
+\textbf{International Conference on Artificial Immune Systems (ICARIS)}, LNCS 5666, pages 4-6.
+\end{description}
+
+\subsubsection*{Other}
+
+\begin{description}
+\item[D3]
+\textit{K Alden and \underline{M Read}}
+(2013).
+Scientific software needs quality control.
+\textbf{Nature} 502:448.
+This is an editor-reviewed correspondence.
+
+\item[D2]
+\textit{\underline{M Read}.}
+(2012).
+Statistical and Modelling Techniques to Build Confidence in the Investigation of Immunology through Agent-Based Simulation.
+\textbf{PhD thesis}, Department of Computer Science, University of York.
+
+\item[D1]
+\textit{\underline{M Read}.}
+(2007).
+Explicable Boolean Functions.
+\textbf{Masters degree dissertation}, Department of Computer Science, University of York.
+\end{description}
+
+% ======================
+\subsection*{Research Funding}
+% ======================
+
+% ----------------------
+\subsubsection*{Australian Research Council}
+% ----------------------
+
+\begin{itemize}
+    \item
+    \textit{T Chtanova, \underline{M Read}.}
+    Why do neutrophils swarm?
+    \textbf{Australian Research Council Discovery Project}: \$560K, 2022-2024. DP220102278.
+\end{itemize}
+
+\begin{itemize}
+    \item
+    \textit{M Biro, \underline{M Read}.}
+    Search strategy optimisation by theory, functional analysis and simulation.
+    \textbf{Australian Research Council Discovery Project}: \$388K, 2018-2021. DP180102458.
+\end{itemize}
+
+% ----------------------
+\subsubsection*{External Competitive Grants}
+% ----------------------
+
+\begin{itemize}
+\item
+\textit{M Tracy, M Hinder, R Halliday, A McEwan, A Kumar, \underline{M Read}, TA Goyen, M Cruz.}
+Virtual baby Project: (vbaby) predictive physiological modelling of critically ill preterm newborns.
+\textbf{Cerebral Palsy Alliance Research Foundation}: \$200K, 2020.
+
+\item
+\textit{M Danta, S Ghaly, D Samocha-Bonet, C Bourke, \underline{M Read}, L Macia, G Wark.}
+Metabolic monitoring of the microbiome in gastrointestinal disease study.
+\textbf{St Vincent's Clinic Foundation Research Grant}: \$40K, 2018.
+
+\item
+\textit{C Clark, S Garcia, \underline{M Read}}.
+Large dairy herds: Creating value from data.
+\textbf{Dairy Australia/Research and Development Grants}: \$158K, 2015-2017.
+
+\item
+\textit{\underline{M Read}.}
+Royal Academy of Engineering International Travel Grant: £500, 2009.
+\end{itemize}
+
+% ----------------------
+\subsubsection*{Internal Competitive Grants}
+% ----------------------
+
+\begin{itemize}
+\item
+\textit{\underline{M Read}, H McGuire, A Kumar, E Patrick, K Kott, T Ashhurst, B Di Bartolo.}
+Data science innovations to reveal the cellular foundations of atherosclerotic arterial disease.
+\textbf{Cardiovascular Bioengineering and Data Science Catalyst Award}: \$10K, 2020.
+
+\item
+\textit{\underline{M Read}, A Kumar, E Shanahan, et al.}
+Enabling personalised dietary recommendations to improve cardiometabolic health.
+\textbf{Cardiovascular Initiative Catalyst Award: Cardiovascular Precision Medicine}: \$10K, 2019.
+
+\item
+\textit{\underline{M Read}, G Rangan}.
+Understanding Polycystic Kidney Disease through Data-Driven Approaches.
+\textbf{Westmead Industrial Placement Scheme}: \$18.5K, 2019.
+
+\item
+\textit{\underline{M Read}, C Chow, A Kumar.}
+Advancing cardiovascular disease management through machine learning.
+\textbf{Westmead Industrial Placement Scheme}: \$18.5K, 2019.
+
+% \item
+% \textit{\underline{M Read}, S Dervish, I Koprinska, T Ashhurst, G Haryono.}
+% Understanding the immune response to disease though temporal cluster tracking.
+% \textbf{Westmead Summer Scholarship}: \$10K, 2019.
+
+\item
+\textit{T Ashurst, \underline{M Read}, N King, U Roehm, I Koprinska, R Scalzo.}
+Mapping dynamic immunity: Next generation computational approaches to track the evolution of immune responses in West Nile virus and Zika virus encephalitis.
+\textbf{Marie Bashir Institute}: \$10,000, 2017.
+
+\end{itemize}
+
+% ======================
+\subsection*{Prizes}
+% ======================
+
+\begin{itemize}
+ \item 2019 University of Sydney Faculty of Engineering, Research Conversazione award. Won by my PhD student, Juan Molina Ortiz.
+ \item 2019 Dolby Australia Scientific Paper Competition, for the ChronoClust paper, output J15 above.
+ \item 2017 Award for Reduction in the Use of Animals in Research, The University of Sydney. For simulations of the mouse gut, as related to output J12 above.
+ \item Best computational immunology paper prize at the International Conference on Artificial Immune Systems (ICARIS) 2011, for output A2 (above). Voted for by conference attendees
+ \item My PhD thesis was awarded 2$^{\mathrm{nd}}$ prize in the University of York Computer Science Department's ``Best PhD Thesis Award 2011''
+ \item My Masters degree dissertation was awarded the 2007 Science Engineering and Technology (SET) national prize in Information Technology
+ \item My Masters degree dissertation was awarded ``Best Project'' prize by the University of York's Computer Science department in 2007
+\end{itemize}
+
+% ======================
+\subsection*{Supervision of Research Students}
+% ======================
+
+\noindent{\bf Current PhD}
+\begin{itemize}
+    \item Jonathan Chung (2020). ``Mapping disease state through machine learning and imaging mass cytometry.'' Primary supervisor.
+
+    \item Juan Ortiz (2019). ``Modelling the gut: an in silico/in vitro approach to understanding the gut microbiome dynamics.'' Primary supervisor.
+
+    \item Givanna Haryono (2017). ``Revealing the development of the immune response through dynamic clustering.'' Primary supervisor. % co-supervisor
+\end{itemize}
+
+\noindent{\bf Current MPhil}
+\begin{itemize}
+\item Jiadi Dong (2020). ``Segmentation and classification of cells in imaging mass cytometry using deep learning methods.'' Co-supervisor.
+\end{itemize}
+
+\noindent{\bf Current Honours-equivalent}
+\begin{itemize}
+    \item Dijun Arthur Ng (2021). ``Distinguishing junk- from informative-machine learning models in data-constrained biomedical contexts.'' Primary supervisor.
+\end{itemize}
+
+\noindent{\bf Completed Masters and Honors-equivalent}
+\begin{itemize}
+    \item Lina Gain (2020), Honours-equivalent research placement thesis. ``Machine learning-based prediction of the blood metabolome from diet and gut microbial profiling.'' Primary supervisor.
+
+    % \item Kevin Su (2020), Capstone thesis. ``Predicting blood pressure with machine learning''. Primary supervisor.
+
+    \item Brendon Lam (2020), Honours thesis. ``The immune system in Crohn's disease as elucidated through computational modelling'', Primary supervisor.
+
+    % \item Louise Li (2020), Capstone thesis.``Classifying peripheral blood mononuclear cells using machine learning and cytometry''. Primary supervisor.
+
+    \item Aakanksha Jain (2020), Masters thesis. ``Determining ecological roles in gut microbes through genome scale modelling and machine learning.'' Primary supervisior.
+
+    % \item Venkata Kotagiri (2020), capstone. ``Optimsing gut microbial community metabolic output with multi-objective optimisation.'' Primary supervisor.
+
+    \item Yifan Shi (2019), Masters thesis. ``Predicting post-prandial glucose responses from dietary, acitvity and gut microbiome quantifications through machine learning.'' Primary supervisor.
+
+    \item Alissa Chaitarvornkit (2020), Honours-equivalent research placement thesis. ``Machine learning biomarkers for polycystic kidney disease.'' Primary supervisor.
+
+    % \item Davis Edwards (2019), summer scholar. ``Time-series clustering for cytometry data through FlowSOM.'' Primary supervisor.
+
+    % \item Henry Chan (2019), summer placement student. ``Computational approaches for investigating motility characterisations.''
+
+    % \item Lava Shrestha (2019), Summer placement student. ``Computational modelling of Crohn's disease''.
+
+    % \item Davis Edwards (2019), Capstone project. ``How do we rationally control gut microbial systems? Insights from computational modelling.'' Primary supervisor.
+
+    \item Raymond Huang (2019), Honours. ``Computational simulation of microbial monoculture growth dynamics; a prerequisite for rational microbiome-targeting interventions.'' Primary supervisor.
+
+    % \item Juan Ortiz (2018), Summer Scholar. ``What drives microbial symbiosis? Exploring gut microbiome dynamics for improved design of dietary interventions.'' Primary supervisor.
+
+    % \item Takua Kojima (2018), Summer Scholar. ``Using machine learning to predict gut microbiome-modulation of clinical outcomes in melanoma.'' Primary supervisor.
+
+    \item Juan Ortiz (2018), Masters thesis. ``The role of gut microbial symbiosis on community resilience and hysteresis.'' Primary supervisor.
+
+    % \item Huw Evans (2018), undergraduate Tallented Student Project. ``Novel functional groupings of microbes that yield more accurate predictions of clinical outcomes.'' Primary supervisor.
+
+    \item Avneet Kaur (2018), Honours. ``Understanding and engineering neutrophil swarming.'' Primary supervisor.
+
+\item Joshua Won (2016-17), Honours. ``Partial differential equation modelling of gut microbial dynamics.'' Associate supervisor. % co-supervised with Prof. Mary Myerscough.
+
+\item Mika Herath (2017), Honours. ``Developing a model for studying hematopoietic stem cell recirculation: A multidisciplinary approach.'' Associate supervisor. % co-supervisor
+
+% \item Charlotte Haunton (2017), undergraduate Talented Student Project. ``Microbes, maladies and machine learning: an overview of the emerging field of microbiome-based machine learning.'' Primary supervisor.
+
+% \item Jonathan Du (2017), undergraduate Talented Student Project. ``Classification of breathing patterns using machine learning techniques.'' Associate supervisor.
+
+% \item Tao Tang (2016-17), summer scholarship holder. ``Analysing the immune response through dynamic, dimensionality-reducing, time-series clustering.'' Primary supervisor.
+
+% \item Rui Geng (2016-17), summer scholarship holder. ``Visualising the high dimensional temporal development of the immune response.'' Primary supervisor.
+
+% \item Samuel Freire (2016-17), initially a visiting international student, a CPC Summer Scholarship holder thereafter. ``Characterising the stem cell dynamics underlying clonal haematopoiesis through simulation.'' Primary supervisor.
+
+\item Deeksha Singh (2016), Honours. ``Incremental clustering of high dimensional, high throughput cytometry data to analyse immune response to West Nile Virus.'' Primary Supervisor.
+% attained a mark of 87 (high distinction).
+
+% \item Cecilia Li (2016), undergraduate research project, thereafter a summer scholarship holder. ``Classification of breathing patterns using machine learning techniques'' Associate supervisor.
+
+% \item Jonathan Chung (2016), undergraduate research project. ``Predicting weight loss using machine learning'' Associate supervisor.
+
+% \item Aolei Yu, Yu-wen Hsu, Jennifer Ellen Myrna Supple, Alysia Conditsis,
+% Charley Jin and Charlotte Haunton (2016). A group project on ``Computer simulation of how diets work to drive a healthy gut.'' Part of the University of Sydney's Talented Students Program (TSP). Primary supervisor.
+
+% \item Roya Huang (2016), an international placement student. ``Modelling the gut microbiome response to diet.'' Primary supervisor.
+
+% \item Rong Zhang (2016), a summer scholarship student. ``Predicting asthma and chronic obstructive pulmonary disease from patient data using machine learning.'' Associate supervisor.
+
+% \item Cameron Andrews (2016), a summer scholarship student. ``Dynamic time-series clustering of the developing immune response to West Nile Virus.'' Associate supervisor.
+
+\item Madison Hartill-Law (2015), Honours. ``A computational approach to investigating the interaction between diet and the microbiome.''  Associate supervisor, attaned a mark of 84 (distinction).
+
+% \item Chris Saunders (2013), PhD student rotation project. ``Using an established EAE simulator for novel in-silico experimentation: The effect of antigen-coated microparticles in reducing EAE autoimmunity.'' Associate supervisor.
+
+\item Magnus Tripp (2013), Master of Engineering thesis. ``Automated calibration of agent-based simulation for an autoimmune disease.'' Associate supervisor.
+
+\item Sophie Alexander (2013), Master of Engineering thesis. ``Simulating underwater swarm robotic systems.'' Associate supervisor.
+
+\item Hannah Leonova (2012), MRes in Computational Biology. ``Automated calibration of agent-based simulation for an autoimmune disease.'' Associate supervisor.
+
+% \item Bjorn Ole-Gerckens (2012), undergraduate project. ``Investiging the effect that 2D versus 3D spatial representations have on simulation dynamics.'' Associate supervisor.
+
+% \item Bjorn Ole-Gerckens, James Butler and Steve Goode: three students from Leeds university are engaged in placements with Jon Timmis. Their work concerned CD200 modelling in EAE. Associate supervisor.
+
+\item Richard Greaves (2011), Master of Research in Computer Science. ``Computational modelling of Treg networks in Experimental Autoimmune Encephalomyelitis'' Associate supervisor.
+
+\item Richard Williams (2010), Master of Research in Computational Biology (Distinction). ``In silico experimentation using simulation of experimental autoimmune encephalomyelitis (EAE).'' Associate supervisor.
+\end{itemize}
+
+% In 2015 I became an independent assessor for Honours students at the University of Sydney's School of Molecular Bioscience.
+
+
+\subsection*{Reviewing and Programme Committee Duties}
+
+In 2019 and 2020 I peer-reviewed for the Australian Research Council.
+
+\begin{itemize}
+ \item Peer reviewed journal manuscripts for:
+ \begin{itemize}
+  \item Applied Soft Computing
+  \item Artificial Intelligence
+  \item BMC Bioinformatics
+  \item Computers in Biology and Medicine
+  \item Engineering Applications of Artificial Intelligence
+  \item Food \& Function (Royal Society of Chemistry)
+  \item Frontiers in Microbiology
+  \item IEEE Transactions on Evolutionary Computation
+  \item The International Society for Microbial Ecology (ISME) Journal
+  \item Natural Computing
+  \item PLoS Computational Biology
+  \item Robotica
+  \item Robotics and Autonomous Systems
+  \item Science of Computer Programming
+  \item Swarm Intelligence
+  \item Water Research
+  \end{itemize}
+
+
+ \item Organising committee member of:
+ \begin{itemize}
+  \item Workshop Chair for the 2013 Confidence in Computer Simulation workshop, part of the Summer Computer Simulation Conference (SCSC)
+  \item Workshop Chair for the 2012 CoSMoS project workshop
+  \item Publicity Chair of the 2011 ICST Conference on Bio-Inspired Models of Network, Information, and Computing Systems (BIONETICS)
+ \end{itemize}
+
+ \item Programme committee member of:
+ \begin{itemize}
+  \item Genetic and Evolutionary Computation Conference (GECCO) 2015, 2016, 2018, 2019
+  \item IEEE Congress on Evolutionary Computation (CEC): 2018, 2019, 2020
+  \item Complex Systems Modelling and Simulation Workshop (CoSMoS) 2014, 2015
+  % \item Genetic and Evolutionary Computation Conference (GECCO) 2015 % Artificial Immune Systems and Artificial Chemistries (AIS-AChem) track
+  \item Artificial Immune Systems (AIS) track at Genetic and Evolutionary Computation Conference (GECCO) 2014
+  \item Summer Computer Simulation Conference (SCSC) 2013
+  \item International Conference on Artificial Immune Systems (ICARIS) 2012
+  \item The Complex Systems Modelling and Simulation Infrastructure (CoSMoS) 2010 workshop
+  \item International Conference on Engineering Complex Computer Systems (ICECCS) 2010.
+  \item International Conference on Artificial Immune Systems (ICARIS) 2009
+ \end{itemize}
+\end{itemize}
+
+
+\subsection*{Visiting Research Posts}
+
+My doctoral research was conducted in conjunction with Dr. Vipin Kumar, an immunologist who headed the Laboratory of Autoimmunity at the Torrey Pines Institute for Molecular Studies (TPIMS) San Diego. I undertook six week-long trips to TPIMS between 2008 and 2012.
+
+
+\subsection*{Invited Talks, Research Seminar, and Summer School Participation}
+
+``Using single-cell cytometry to illustrate the generalisable unbiased evaluation of clustering algorithms using Pareto fronts.'' Australian Bioinformatics And Computational Biology Society Conference, (virtual) 2020.
+
+``Plasma metabolomic and gut microbiome responses to prebiotic supplements.'' Sanitarium Health Food Company, 2020.
+
+``Characterising immune cell movement, and its consequences, through live imaging and simulations.'' Artificial Intelligence in Medical Imaging, Sydney 2020.
+
+``Computational approaches to advancing biomedical understanding.'' Zreiqat Lab, USyd 2019.
+
+``Delivering pre/probiotic health benefits by moving beyond the `One Size Fits All' paradigm.'' St George and Sutherland Clinical School Research in Progress Meeting, 2019.
+
+``Microbes and the Mind.'' Psychology School Seminar, USyd 2019.
+
+``Delivering pre/probiotic health benefits and getting them to market by moving beyond the `One Size Fits All' paradigm.'' Centre for Advanced Food Enginomics industry engagement workshop, Sydney 2019.
+
+``Untangling biological complexity through modelling. Leukocyte motility and search for targets, and gut
+microbial responses to diet.'' The Garvan Institute of Medical Research, Sydney 2018.
+
+``Host- vs diet-derived nutrient balance, and carbon vs nitrogen limitation, determines the effect of dietary intervention on the microbiome.'' Society for Mathematical Biology, Sydney 2018.
+
+``Diagnostics and prognostics through machine learning; a tutorial and case study in gut microbiome-based weight-loss prediction.'' Australian Society for Microbiology, Brisbane 2018.
+
+%``Quantifying and optimising immune cell search for targets.'' Garvan Institute, Sydney (scheduled for May 2018).
+
+``Host- vs diet-derived nutrient balance, and carbon vs nitrogen limitation, determines the effect of dietary intervention on the microbiome.'' Cold Spring Harbour Asia conference on Microbiota, Metagenomics and Health, 2017.
+
+``Determining immune cell search strategies: Studying motility through agent-based modelling and muti-objective optimization.'' QUT School of Mathematical Sciences, 2017.
+
+``Computational modelling and simulation techniques to investigate the gut bacterial ecosystems response to diet.'' Invited talk at Theo Murphy Australian Frontiers of Science conference on the Microbiome, Adelaide, Australia, 2016.
+
+``From an animal's nutrient environment to the microbial environment.'' Invited talk at Modelling the impact of the nutritional environment on host-microbiome interactions, the Cold Spring Harbour Asia Satellite Workshop, Suzhou, China, 2016.
+
+``Simulating the influence of diet on the intestinal microbiome composition.'' Invited talk at Australian Society for Microbiology conference, Canberra, Australia, 2015.
+
+``Modelling the diet's influence on gut bacterial communities.'' Invited talk at the joint University of Sydney and Shanghai Jiao Tong University Research Alliance workshop, 2015.
+
+Delivered an invited talk on the analysis and simulation of complex biological data to a hand-selected group of farmers from New South Wales, Australia, who are seeking data-driven ways to optimise their farming practices. Talk took place in December 2014.
+
+``In Situ Imaging \& Mechanistic Simulation of Cellular Swarming.'' Invited talk at the Computer Graphics in Biomedical and Biological Imaging Data workshop, co-located with Computer Graphics International (CGI), Sydney, Australia, 2014.
+
+``Modelling the gut microbiota response to host diet.'' Invited talk at the Australia and New Zealand Obesity Society conference, Sydney, 2015.
+
+``Capturing the immune system: from the wet-lab to the robot.'' Invited guest lecture at the Awareness Summer School, Lucca, Italy, 2013. Further to this, I organized a case study for students to work on. The case study entailed deriving, in simulation, an algorithm run on underwater swarm robotic platforms that would organize the swarm into a dynamic chain that connected two (possibly moving) points in space.
+
+``Determining disease intervention strategies using spatially resolved simulations.'' Invited talk at the BSI Mathematical and Computational Modelling in Immunology conference, Cambridge, UK, 2013.
+
+I was invited to participate in the AWARENESS (EU funded coordination action) ``slides factory'' in 2012, a meeting of representatives from projects examining self-awareness in autonomic systems who collectively wrote a popular science seminar and an academic course on the subject.
+
+I have presented my research to a variety of research groups and departments within the University of York, to researchers at the Torrey Pines Institute for Molecular Studies in San Diego, and at the Cheltenham Science Festival 2010.
+
+In 2011 I participated in an invitation-only Schloss Dagstul seminar series on Artificial Immune Systems (AIS), and lead a group examining how to derive AIS algorithms from established immunological simulations.
+
+``Building confidence in immunological simulation.'' Invited talk at the International Conference on Artificial Immune Systems, Cambridge, UK. 2011.
+
+
+\section*{Teaching and Education}
+
+% \subsection*{C1. Statement of Teaching Philosophy}
+
+% I am presently designing a new unit of study in healthcare data science, and a Masters program in Digital Health and Data Science.
+% I wish for my students to appreciate the practical value of the subject material, and for them develop a passion for advancing healthcare and improving lives through the skills they learn.
+
+% My belief is that a practical, `hands on’ engagement with the material facilitates this, as students don’t just `watch’ someone else’s efforts but can viscerally experience it in conducting the work themselves.
+% I also believe this encourages a deeper consideration of the subject and thus synthesis of understanding.
+% Thus, I am including practical assessment tasks based on inquiry-based learning in my unit: students will have freedom to select their own topics for these assessments, thus generating a greater sense of ownership and passion for their work.
+
+% In my lectures I schedule practical group activities, allowing students to interact with one another and build a sense of community.
+% This approach also benefits their learning, allowing them to appreciate and consider one another's potentially differing viewpoints.
+% I employ anonymous online pools at a lecture's conclusion to discover which concepts were well understood and which require attention; I adjust my lecture accordingly for future deliveries and can provide targeted clarifications in follow up sessions.
+
+
+% My views stem from my own undergraduate and more recent experiences, in the Graduate Certificate in Educational Studies.
+% I thrive in ambitious problems where I can strategise on how to tackle a complex task, seek out or develop components that I then assemble into a creative solution, with time for reflection and revision.
+% I vividly recall, from 15 years ago, an assignment to create a 3-dimensional simulation of ‘Pooh sticks’ (from Winnie the Pooh) wherein sticks dropped off a bridge splashed down in water and were carried downstream, rotating and accelerating through currents and eddies.
+% I reveled in the technicalities, which I was free to explore: building a sophisticated physics engine encompassing fluid dynamics, gravity, momentum, lighting and mobile camera angles.
+% I was enthralled, surprised when the sun came up.
+% I realised I could create computer games, professionally, if I wanted.
+% I wish to give my students this experience, having them realise that they can transform health-care through their computational skills.
+
+% I aim to implement inquiry-based learning and authentic assessment where possible.
+% I took pride in my assignments, enjoying the exploration and reflection on an artifact I could iteratively craft.
+% Students I have interviewed echo this ethos, they preferred practical and authentic assessments over exams.
+
+% Recently I have focused on adjusting my lecturing style, shifting away from content-heavy didactic monologues.
+% I have come to appreciate that students learn from one another and synthesise through interactions and discussion that they might not have with me as the authority figure.
+% I have implemented post-lecture anonymous student polling as a means of gauging which aspects of my practice are succeeding, and which styles and topics require attention.
+
+%
+% My post-doc and PhD have afforded the me opportunity to engage in student learning by designing and delivering lectures, and as a postgraduate teaching assistant. In these roles I have participated in the delivery of material in a wide variety of computing related modules, have gained valuable experience in how to maximise the benefit to students, and how to relate complicated material to them in a clear and understandable manner, for example finding analogies that relate material to more understandable real-world scenarios. I have gained experience in how to lead students into becoming self-sufficient and inquisitive with respect to the material they are being taught; I believe that this is substantially more beneficial to students' learning and long-term development than simply presenting solutions outright.
+%
+% I am a proponent of delivering modules by presenting a strong and compelling motivation for the material before the material itself. My experience is that students who understand a problem and its significance more proactively engage with the material concerning its solutions and associated theory. They appreciate its value and purpose, rather than being presented with material for which they do not understand the relevance. Consistent with this outlook, I believe that modules that have a practical problem-solving element are generally better received than those that are purely prescriptive. In my experience, students respond better to modules that require them to take ownership of some aspect of their learning. For example, addressing problems where multiple solutions exist, and where they must reason about the course material in selecting the best solutions as they see fit. Particularly in an engineering-focused department, I believe that students respond well to having to analyse a problem and then design, construct and evaluate their solution. Putting theory into practical application promotes students to better explore course material, and knowledge is better retained.
+%
+% My teaching aspirations are well aligned with my inter-disciplinary research outlook. I am eager to develop courses and modules that interface between disciplines, inviting students to understand problems that exist in one field, and gaining practical experience in how they may be solved using the tools that are developed in another. An example would include developing and delivering a course on computational immunology, wherein students are presented with some aspect of immune system function, relevant to a particular disease or treatment, but that cannot be ascertained through traditional wet-lab techniques. Over the course of the module students would employ simulation- and mathematical-based techniques to perform the necessary investigations. Having presented a practical problem with real-world relevance, the course could present material on simulation paradigms and techniques, inviting students to make and justify choices in the context of what they believe best suits the problem at hand. Beyond this hypothetical example, I would hugely value the opportunity to design and deliver modules covering any aspect of non-standard computation, bio-inspired engineering, fundamental programming skills, or any interdisciplinary subject that involves computational and biological aspects.
+%
+% To date I have participated in the supervision of two MRes and three DTC students. I have found the experience invaluable and hugely enjoyable. It has lead me to understand and appreciate how to lead students into exploring their fields, and learning how to address the problems that they identify, rather than providing excessive direction and instruction. I wish to build on my experiences, and would relish the opportunity to supervise more students in a more diverse range of topics and degree programmes.
+%
+% I believe that teaching is a valuable component in any academic career, and that it should be as enjoyable as possible, for both students and educators. I feel that with my outlook on teaching, and my engaging and enthusiastic approach to delivering material, I would comprise a valuable and contributory faculty member.
+%
+
+
+% \subsection*{C2. Experience in the Promotion of Learning}
+
+\textbf{I led the development of USyd's Master of Digital Health and Data Science}, which will launch in 2022.
+The program will educate the next generation of students in data science principles and how they can solve data-driven health problems.
+This is a jointly offered, interdisciplinary course equally taught between the School of Computer Science and the Faculty of Medicine and Health's Discipline of Biomedical Informatics and Digital Health.
+My deep interdisciplinary knowledge was key to designing this degree; I understand the healthcare system context and the biological concepts that underpin a patient's health, and I have deep expertise in computational and data science technologies.
+As such, I expertly collaborated with partners across the Faculty of Engineering, the Faculty of Medicine and Health and the Office of the Deputy Vice Chancellor (Education) to position the program's curriculum and its strategic implementation across the faculties.
+My research program, which drives innovation in data science to advance healthcare, is ideally placed to support projects for the degree's Capstone experience.
+
+I created, delivered and coordinated a \textbf{new unit of study, HTIN5005: Computational Approaches to Health Data} (2021).
+This is a core unit for USyd's Master of Digital Health and Data Science.
+It explores how tailored application of data science can enable personalised medicine, deliver remote care and clinical decision support systems, and optimise hospital operations using a wide range of health and biomedical data sources.
+From a technical perspective, the unit covers data types, descriptive and inferential statistical techniques, both supervised and unsupervised machine learning, computational simulations, and has a heavy focus on application in the R programming language.
+The cohort comprises students from both technical and health-related backgrounds.
+As such the material is designed to assume no prior knowledge, and yet students are able to apply data science techniques to model, visualise and interpret health data.
+The unit employs inquiry-based learning for assessments, wherein students have freedom to select healthcare problems and corresponding datasets on which to apply computational techniques to advance care.
+In 2021 the unit was delivered remotely over Zoom, given restrictions on in-person teaching due to the COVID-19 pandemic.
+
+Other course coordination:
+\begin{itemize}
+\item HTIN5004: Integrated Approaches to Chronic Disease (2016, 2017, 2020; USYD).  A core unit on the Master of Health Technology Innovation. I helped design this course.
+\item HTIN5001: Nature of Systems (2020; USYD).  A core unit on the Master of Health Technology Innovation.
+\end{itemize}
+
+I regularly serve as an independent assessor for Capstone, Honours and Masters-level student projects.
+
+% \begin{itemize}
+%     \item Jessica Sun, Honours (Science), 2019.
+%     \item Mark Bungo, Honours (Science), 2019.
+%     \item Bial Akil; Masters, 2019, University of Sydney Faculty of Engineering and IT. ``A comparitive study of Hadoop MapReduce, Apache Spark \& Apache Flink for data science.''
+%     \item Thomas Geddes; Honours (Science), University of Sydney Faculty of Science.
+% \end{itemize}
+
+Lecturing experience (lecture title and details of unit given):
+\begin{itemize}
+\item HTIN5005: Computational Approaches to Health Data (2021). This unit teaches biomedical and healthcare data science.
+\item ``Personalized healthcare with machine learning.'' (2020; USyd, postgraduate). Guest lecture for Sustainability and Intelligence in Project Management (PMGT5896).
+\item ``Advancing medicine and healthcare through machine learning'' (2020; USyd, postgraduate). Guest lecture for Machine Learning and Data Mining (COMP5318).
+\item ``ICT-enabled diagnostics, prognostics and clinical decision support'' (2019; USyd, post-graduate unit). 1h guest lecture on Enterprise Healthcare Information Systems (INFO5306).
+\item ``Computational Modelling in Biological Research'' (2016 - 2019; USyd, post-graduate unit). 1h lecture as part of Integrated Approaches to Chronic Disease (HTIN5004).
+\item ``Bioinformatics for Cytometry'' (2017; USyd, medical unit). Guest lecture on cutting edge technologies for analysing high-dimensional cytometry data. Given to students of USyd's Medical Program, Cardiovascular Sciences stream.
+\item ``Simulating the Gut Microbial Response to Diet'' (2016; USyd, post-graduate unit). A 3 hour session delivered as part of The Nature of Systems (HTIN5001).
+\item ``Workshop on Writing Academic Papers'' (2015; USyd). I co-organised and co-wrote this course, and delivered lectures on the presentation of data and selecting a journal to publish in.
+\item ``Providing an Integrative Perspective of Biological Systems using Computer Simulations'' (2014; USyd, undergraduate unit). A 1h guest lecture to 3rd year Veterinary Science students, studying Animal Biotechnology.
+
+\item I developed and delivered 4 hours of material for the Swarm Intelligence master's unit (2012; UY, post-graduate). Titles:
+ \begin{itemize}
+  \item ``Group Behaviour''
+  \item ``Simulation of Swarm Robotic Systems''
+  \item ``Statistics and Sensitivity Analysis''
+  \item ``Communication-less Boids'' (a flocking algorithm)
+ \end{itemize}
+
+\item As part of UY's Combating Infectious Disease: Computational Approaches in Translational Science Ph.D. training program, I developed and delivered the following, in both 2011 and 2012.
+ \begin{itemize}
+  \item ``The Experimental Autoimmune Encephalomyelitis Simulator''
+  \item ``Performing \emph{in silico} Experiments''
+  \item ``Calibration \& Sensitivity Analysis''
+ \end{itemize}
+
+\item ``Simulation in Swarm Robotics'' (2011; UY, post-graduate). A 1h lecture I prepared and delivered for the Swarm Intelligence unit.
+\end{itemize}
+
+
+% Demonstration experience (assistance in practical classes):
+% \begin{center}
+% \begin{tabular}{lll}
+% Date & Module Title & Targeted Year Group \\
+%   \hline
+% 2007 & Cryptography, Attacks and Countermeasures & 3$^{rd}$ year undergraduate\\
+% 2009 & Practical Programming Skills & 1$^{st}$ year undergraduate\\
+% 2009 & Introduction to Computer Systems & 1$^{st}$ year undergraduate\\
+% 2009 & Object Oriented Design & Masters\\
+% 2010 & Practical Programming Skills & 1$^{st}$ year undergraduate\\
+% 2010 & Theory and Practice of Programming & 1$^{st}$ year undergraduate\\
+% \end{tabular}
+% \end{center}
+
+
+\section*{Service}
+
+I currently serve on a cross-disciplinary committee of academics that develop University of Sydney's strategy for engaging the Westmead Health Precinct.
+
+I was a founding member and inaugural Chair (2014-2016) of the Early Career Researcher Initiative committee, at the University of Sydney's Charles Perkins Centre (CPC), an interdisciplinary research institute of 900 researchers. The committee organises activities supporting EMCR professional development, social integration and career progression. It also advocates on their behalf to the CPC's executive committee.
+
+In March 2015 I joined the NSW EMCR (Early and Mid Career Researcher) Network organising committee, and served as the Vice President. This network runs roughly 4 events a year, which aim to build professional networks between EMCRs and the private sector. Specifically, this is to make EMCRs aware of professional opportunities and careers where their training as researchers would be valued, and to provide the NSW private sector with exposure to a wide range highly skilled researchers. I stood down in 2017.
+
+
+\section*{Public Engagement}
+
+I ran a workshop on machine learning for teachers of science at a University of Sydney event in 2018.
+
+In 2016 I worked with a journalist in the University of Sydney's Alumni magazine who wrote an article on the gut microbiome that featured my research.
+
+In March 2015 I delivered a public lecture on the interactions between host diet and gut microbial communities in influencing host health, at Ultimo library, Sydney.
+%The talk took place in Ultimo library, Sydney, and is part of the `Inspiring Science' scheme which seeks to give the public exposure to the work of early stage academic researchers.
+
+% In 2009 I joined the EPSRC funded New Outlooks In Science and Engineering\footnote{\emph{http://www.noisemakers.org.uk/}} (NOISE) public engagement initiative. Through NOISE, I have demonstrated principles of science and engineering to the general public at the 2009 Manchester Science Festival. I sat on a panel of 3 computer scientists at the 2010 Cheltenham Science Festival and engaged the audience in a discussion concerning the future of computers, and how they have aided modern day life. Through NOISE I have attended workshops in media training and public engagement.
+
+I was interviewed and quoted in \href{https://www.welcometothejungle.com/en/articles/btc-computer-biological-virus}{Can strategies used against computer viruses help us fight biological viruses?} by Andy Favell, 2020.
+
+
+\section*{Academic References}
+
+\begin{tabular}{l}
+\textbf{Professor Jon Timmis} \\
+Professor of Intelligent and Adaptive Systems.\\
+Deputy Vice-Chancellor (Commercial), The University of Sutherland, United Kingdom\\
+jon.timmis@sunderland.ac.uk\\
+Prof. Timmis was my Ph.D. supervisor, and, thereafter, line manager during my first post-doctoral\\ position at the University of York.\\
+\\
+
+\textbf{Professor Vipin Kumar (Chaturvedi)}\\
+Professor of Medicine.\\
+School of Health Sciences, UC San Diego.\\
+vckumar@ucsd.edu\\
+Prof. Kumar was my host for several international collaborative research visits that I conducted whilst\\ at the University of York.\\
+\\
+%  \textbf{Associate Professor Andrew Holmes} \\
+%  Faculty of Science, The University of Sydney, Australia \\
+%  andrew.holmes@sydney.edu.au \\
+%  A/Prof. Holmes is a collaborator on my microbiome-related work, and was my line-manager for 6 years. \\
+%  \\
+
+ \textbf{Associate Professor Irena Koprinska}\\
+ Faculty of Engineering, The University of Sydney, Australia\\
+ irena.koprinska@sydney.edu.au\\
+ A/Prof. Koprinska is a close collaborator on my machine learning-related projects.\\
+ \\
+ %  \textbf{Dr. Mat\'{e} Biro}\\
+ % School of Medical Sciences and EMBL Australia, The University of New South Wales, Australia\\
+ % Dr. Biro is a close collaborator on immune motility and search strategies.\\
+ % \\
+
+\end{tabular}
 
 \end{document}
