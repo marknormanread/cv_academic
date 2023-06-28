@@ -1,4 +1,11 @@
-# latex-on-ci-cd
-Compile latex files  and release PDF output using Github Actions 
+# Mark Read's Academic CV
 
-Blog Post: https://mrturkmen.com/posts/build-release-latex/
+An acadmic CV differs from a resumé in that it much more fully documents one's academic activities and achievements. 
+I left academia in 2021, so am no longer active in this space. 
+But for those wanting to see what I got up to, here it is. 
+
+This was also a little project for me to explore continuous integration / continuous deployment (CI/CD) in GitHub. 
+The PDF is built using GitHub Actions. 
+
+[Click here to download the PDF](dist/mark_read.pdf/main.pdf) (I'm still working on having it be the main viewable front-end item of this repo). 
+
