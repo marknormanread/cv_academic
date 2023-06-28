@@ -12,19 +12,22 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: main.tex
+          root_file: mark_read_cv.tex
+          
+      # The following upload and download are not really required. 
+      # The git add and push commands that follow are what places the PDF file
+      # in the repository. 
+#       - name: Upload PDF file
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: BUILT_PDF
+#           path: mark_read_cv.pdf
 
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
-        with:
-          name: BUILT_PDF
-          path: main.pdf
-
-      - name: Download PDF file
-        uses: actions/download-artifact@v3
-        with:
-          name: BUILT_PDF
-          path: dist/mark_read_cv.pdf
+#       - name: Download PDF file
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: BUILT_PDF
+#           path: dist/mark_read_cv.pdf
           
       - name: Configure Git
         run: |
@@ -32,7 +35,9 @@ jobs:
           git config --global user.email "mark.norman.read@gmail.com"
 
       - name: Add file
-        run: git add dist/mark_read_cv.pdf
+        run: |
+          git add mark_read_cv.pdf 
+          git add mark_read_cv.log
 
       - name: Commit changes
         run: |
